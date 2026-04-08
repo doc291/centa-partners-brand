@@ -126,7 +126,7 @@ export default function Advisory() {
           <p className="text-text-muted text-base mt-3">Full platform access included. No hidden costs. No hourly billing.</p>
         </div>
         <CTABar
-          primary={{ label: 'Book a Discovery Call', href: 'mailto:tony@centapartners.com.au?subject=Centa%20Catalyst%20Enquiry' }}
+          primary={{ label: 'Book a Discovery Call', href: 'https://calendly.com/centapartners/discovery', external: true }}
         />
         <p className="text-text-dim text-sm mt-3">30 minutes. No obligation. I'll tell you honestly if Catalyst is right for your stage.</p>
       </Section>

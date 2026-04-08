@@ -39,12 +39,18 @@ export default function HowWeWork() {
   return (
     <>
       <Helmet>
-        <title>How We Work. Centa Partners.</title>
-        <meta name="description" content="Three steps. No complexity. Identify the constraint. Execute against one metric. Scale once the system works." />
+        <title>How We Work. Diagnostic, Coaching, Advisory. Centa Partners.</title>
+        <meta name="description" content="Three steps. Identify the constraint with Centa Clarity. Execute against one metric with Centa Coach. Scale with Centa Catalyst advisory. No complexity." />
         <link rel="canonical" href="https://centapartners.com.au/how-we-work" />
-        <meta property="og:title" content="How We Work. Centa Partners." />
-        <meta property="og:description" content="Three steps. No complexity." />
+        <meta property="og:title" content="How We Work. Diagnostic, Coaching, Advisory. Centa Partners." />
+        <meta property="og:description" content="Three steps. Identify the constraint. Execute against one metric. Scale once the system works." />
         <meta property="og:url" content="https://centapartners.com.au/how-we-work" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Centa Partners" />
+        <meta property="og:locale" content="en_AU" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="How We Work. Diagnostic, Coaching, Advisory. Centa Partners." />
+        <meta name="twitter:description" content="Three steps. Identify the constraint. Execute against one metric. Scale once the system works." />
       </Helmet>
 
       {/* Hero */}

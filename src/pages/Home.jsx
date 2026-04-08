@@ -8,12 +8,50 @@ export default function Home() {
     <>
       <Helmet>
         <title>Centa Partners. Growth Advisory for Tech Founders.</title>
-        <meta name="description" content="Centa Partners helps founder-led tech businesses identify the one constraint holding them back and execute against it. Diagnostic. Coaching. Advisory." />
+        <meta name="description" content="Centa Partners helps founder-led tech businesses identify the one constraint holding them back and execute against it. Diagnostic. Coaching. Advisory. Based in Australia." />
         <link rel="canonical" href="https://centapartners.com.au" />
         <meta property="og:title" content="Centa Partners. Growth Advisory for Tech Founders." />
-        <meta property="og:description" content="Find the constraint. Fix the growth." />
+        <meta property="og:description" content="Find the one constraint holding your business back. Diagnostic, coaching, and direct advisory for founder-led tech businesses." />
         <meta property="og:url" content="https://centapartners.com.au" />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Centa Partners" />
+        <meta property="og:locale" content="en_AU" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Centa Partners. Growth Advisory for Tech Founders." />
+        <meta name="twitter:description" content="Find the one constraint holding your business back. Diagnostic, coaching, and direct advisory for founder-led tech businesses." />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "name": "Centa Partners",
+                "url": "https://centapartners.com.au",
+                "description": "Growth advisory for founder-led tech businesses. Diagnostic, coaching, and direct advisory.",
+                "foundingDate": "2024",
+                "areaServed": "AU",
+                "sameAs": []
+              },
+              {
+                "@type": "WebSite",
+                "name": "Centa Partners",
+                "url": "https://centapartners.com.au"
+              },
+              {
+                "@type": "ProfessionalService",
+                "name": "Centa Partners",
+                "url": "https://centapartners.com.au",
+                "description": "Growth advisory and diagnostic platform for founder-led technology businesses",
+                "priceRange": "$$",
+                "areaServed": {
+                  "@type": "Country",
+                  "name": "Australia"
+                },
+                "serviceType": ["Business Advisory", "Growth Consulting", "Business Diagnostic"]
+              }
+            ]
+          }
+        `}</script>
       </Helmet>
 
       {/* Section 1: Opening Hook */}

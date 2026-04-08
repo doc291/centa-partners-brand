@@ -31,12 +31,18 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About. Centa Partners.</title>
-        <meta name="description" content="Built by operators. Not consultants. 20+ years of scaling, turning around, and exiting tech businesses." />
+        <title>About Centa Partners. 20+ Years Scaling Tech Businesses.</title>
+        <meta name="description" content="Built by operators. Not consultants. 20+ years of scaling, turning around, and exiting founder-led tech businesses. 2,400% revenue growth delivered." />
         <link rel="canonical" href="https://centapartners.com.au/about" />
-        <meta property="og:title" content="About. Centa Partners." />
-        <meta property="og:description" content="Built by operators. Not consultants." />
+        <meta property="og:title" content="About Centa Partners. 20+ Years Scaling Tech Businesses." />
+        <meta property="og:description" content="Built by operators. Not consultants. 20+ years of scaling, turning around, and exiting founder-led tech businesses." />
         <meta property="og:url" content="https://centapartners.com.au/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Centa Partners" />
+        <meta property="og:locale" content="en_AU" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="About Centa Partners. 20+ Years Scaling Tech Businesses." />
+        <meta name="twitter:description" content="Built by operators. Not consultants. 20+ years of scaling, turning around, and exiting founder-led tech businesses." />
       </Helmet>
 
       {/* Hero */}

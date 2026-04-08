@@ -27,12 +27,18 @@ export default function Advisory() {
   return (
     <>
       <Helmet>
-        <title>Advisory. Centa Partners.</title>
-        <meta name="description" content="Direct advisory for founders who don't have time to get this wrong. Weekly strategy sessions. Custom playbook. Direct line." />
+        <title>Centa Catalyst. Direct Advisory for Tech Founders. Centa Partners.</title>
+        <meta name="description" content="Direct advisory for tech founders. Weekly 1:1 strategy sessions. Custom growth playbook. $5,000 AUD/month. No hourly billing. Based in Australia." />
         <link rel="canonical" href="https://centapartners.com.au/advisory" />
-        <meta property="og:title" content="Advisory. Centa Partners." />
-        <meta property="og:description" content="Direct advisory for founders who don't have time to get this wrong." />
+        <meta property="og:title" content="Centa Catalyst. Direct Advisory for Tech Founders." />
+        <meta property="og:description" content="Weekly strategy sessions. Custom growth playbook. Direct line. For founders doing $2M to $20M who need an operator in the room." />
         <meta property="og:url" content="https://centapartners.com.au/advisory" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Centa Partners" />
+        <meta property="og:locale" content="en_AU" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Centa Catalyst. Direct Advisory for Tech Founders." />
+        <meta name="twitter:description" content="Weekly strategy sessions. Custom growth playbook. Direct line. For founders doing $2M to $20M who need an operator in the room." />
       </Helmet>
 
       {/* Hero */}
@@ -42,7 +48,6 @@ export default function Advisory() {
           <h1 className="text-3xl md:text-5xl font-bold text-text-primary mt-4 max-w-3xl">
             Direct advisory for founders who don't have time to get this wrong.
           </h1>
-          <p className="text-text-muted text-xs uppercase tracking-wider mt-4">Voice shifts to first person on this page to increase trust.</p>
         </div>
       </section>
 

@@ -17,7 +17,7 @@ export default function Home() {
       </Helmet>
 
       {/* Section 1: Opening Hook */}
-      <section className="px-6 pt-32 pb-20 md:pt-44 md:pb-28">
+      <section className="px-6 pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-text-primary leading-tight">
             Most founders don't have a growth problem.
@@ -106,7 +106,7 @@ export default function Home() {
       </Section>
 
       {/* Section 6: Closing CTAs */}
-      <section className="px-6 py-20 md:py-28 bg-surface">
+      <section className="px-6 py-12 md:py-16 bg-surface">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
           <div className="bg-bg-card border border-border rounded-xl p-8 md:p-10 hover:border-brand/30 transition-colors">
             <h3 className="text-xl font-bold text-text-primary">Run the Diagnostic</h3>

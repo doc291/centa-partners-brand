@@ -4,7 +4,6 @@ import Home from './pages/Home'
 import About from './pages/About'
 import HowWeWork from './pages/HowWeWork'
 import Advisory from './pages/Advisory'
-import Insights from './pages/Insights'
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
@@ -17,7 +16,6 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/how-we-work" element={<HowWeWork />} />
           <Route path="/advisory" element={<Advisory />} />
-          <Route path="/insights" element={<Insights />} />
         </Route>
       </Routes>
     </>

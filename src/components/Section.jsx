@@ -2,7 +2,7 @@ export default function Section({ children, className = '', dark = false, id }) 
   return (
     <section
       id={id}
-      className={`px-6 py-20 md:py-28 ${dark ? 'bg-surface' : ''} ${className}`}
+      className={`px-6 py-12 md:py-16 ${dark ? 'bg-surface' : ''} ${className}`}
     >
       <div className="max-w-4xl mx-auto">
         {children}

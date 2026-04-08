@@ -5,7 +5,6 @@ const links = [
   { to: '/about', label: 'About' },
   { to: '/how-we-work', label: 'How We Work' },
   { to: '/advisory', label: 'Advisory' },
-  { to: '/insights', label: 'Insights' },
 ]
 
 export default function Nav() {
@@ -16,7 +15,7 @@ export default function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 no-underline" onClick={() => setOpen(false)}>
-          <span className="text-brand font-bold text-xl tracking-tight">CENTA PARTNERS</span>
+          <img src="/logo-white.png" alt="Centa Partners" className="h-8" />
         </Link>
 
         {/* Desktop */}

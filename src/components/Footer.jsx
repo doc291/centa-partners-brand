@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-bg">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div>
-            <span className="text-brand font-bold text-lg tracking-tight">CENTA PARTNERS</span>
+            <img src="/logo-white.png" alt="Centa Partners" className="h-7" />
             <p className="text-text-dim text-sm mt-2">Success, Simplified.</p>
           </div>
 
@@ -17,7 +17,6 @@ export default function Footer() {
                 <Link to="/about" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">About</Link>
                 <Link to="/how-we-work" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">How We Work</Link>
                 <Link to="/advisory" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Advisory</Link>
-                <Link to="/insights" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Insights</Link>
               </div>
             </div>
 

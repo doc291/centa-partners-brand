@@ -48,7 +48,7 @@ export default function HowWeWork() {
       </Helmet>
 
       {/* Hero */}
-      <section className="px-6 pt-32 pb-16 md:pt-44 md:pb-20">
+      <section className="px-6 pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="max-w-4xl mx-auto">
           <SectionLabel>How we work</SectionLabel>
           <h1 className="text-3xl md:text-5xl font-bold text-text-primary mt-4">

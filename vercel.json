@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/book", "permanent": false, "destination": "https://calendly.com/centapartners/45min" }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

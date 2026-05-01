@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+const REVEAL_MS = 2600
+const GLOW_MS = 1200
+
 const CSS = `
 .cn-stage {
   position: relative;
@@ -8,108 +11,94 @@ const CSS = `
   margin: 0 auto;
 }
 
+/* Behind the maze — soft purple halo that pulses once and settles */
 .cn-glow {
   position: absolute;
-  inset: -8%;
+  inset: -10%;
   border-radius: 50%;
   background: radial-gradient(circle at center,
-    rgba(91, 33, 217, 0.55) 0%,
-    rgba(91, 33, 217, 0.18) 32%,
-    rgba(91, 33, 217, 0) 60%);
+    rgba(91, 33, 217, 0.50) 0%,
+    rgba(91, 33, 217, 0.15) 34%,
+    rgba(91, 33, 217, 0) 62%);
   opacity: 0;
   pointer-events: none;
-  filter: blur(6px);
-  transition: opacity 1s ease, transform 1s ease;
+  filter: blur(4px);
+  z-index: 0;
 }
 
+/* The maze itself — a div masked with the logo PNG, painted brand purple */
 .cn-mark {
   position: absolute;
-  inset: 8%;
-  background-color: #3A3A48;
+  inset: 6%;
+  background-color: #5B21D9;
   -webkit-mask: url('/icon.png') center / contain no-repeat;
           mask: url('/icon.png') center / contain no-repeat;
+  z-index: 1;
+}
+
+/* Disc that covers the maze and shrinks to nothing — outside-in reveal */
+.cn-cover {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background-color: #0B0B0F;
   transform-origin: center;
-  transform: scale(0.74) rotate(-14deg);
-  filter: blur(5px);
-  opacity: 0.42;
-  transition:
-    background-color 1.2s ease,
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.9s ease,
-    opacity 0.9s ease;
+  transform: scale(1.08);
+  z-index: 2;
+  animation: cn-reveal ${REVEAL_MS}ms cubic-bezier(0.32, 0.72, 0.30, 1) 0.18s forwards;
 }
 
-/* Subtle ambient pulse during the unsettled phase */
-.cn-stage.phase-unsettled .cn-mark {
-  animation: cn-breathe 2.4s ease-in-out infinite alternate;
+/* Faint trailing edge along the shrinking boundary — feels like a path being walked */
+.cn-cover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(91, 33, 217, 0.45);
+  box-shadow: 0 0 14px 2px rgba(91, 33, 217, 0.35);
+  opacity: 0.9;
 }
 
-@keyframes cn-breathe {
-  from { transform: scale(0.74) rotate(-14deg); }
-  to   { transform: scale(0.78) rotate(-10deg); }
+@keyframes cn-reveal {
+  0%   { transform: scale(1.08); }
+  100% { transform: scale(0);    }
 }
 
-/* Identified — constraint becomes clear */
-.cn-stage.phase-identified .cn-mark {
-  animation: cn-snap 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
-  background-color: #5B21D9;
-  filter: blur(0);
-  opacity: 1;
-}
+/* Identified — glow pulses out as the maze completes */
 .cn-stage.phase-identified .cn-glow {
-  animation: cn-glow-pulse 1.5s ease-out 1 forwards;
+  animation: cn-glow-pulse ${GLOW_MS}ms ease-out 1 forwards;
 }
 
-@keyframes cn-snap {
-  0%   { transform: scale(0.78) rotate(-10deg); }
-  55%  { transform: scale(1.06) rotate(2deg); }
-  100% { transform: scale(1)    rotate(0deg); }
+/* Stable — glow holds quietly */
+.cn-stage.phase-stable .cn-glow {
+  animation: none;
+  opacity: 0.2;
 }
 
 @keyframes cn-glow-pulse {
-  0%   { opacity: 0;    transform: scale(0.82); }
-  40%  { opacity: 1;    transform: scale(1.08); }
-  100% { opacity: 0.22; transform: scale(1); }
+  0%   { opacity: 0;   transform: scale(0.86); }
+  50%  { opacity: 1;   transform: scale(1.06); }
+  100% { opacity: 0.2; transform: scale(1);    }
 }
 
-/* Stable — locked, calm */
-.cn-stage.phase-stable .cn-mark {
-  animation: none;
-  background-color: #5B21D9;
-  transform: scale(1) rotate(0);
-  filter: blur(0);
-  opacity: 1;
-}
-.cn-stage.phase-stable .cn-glow {
-  animation: none;
-  opacity: 0.22;
-  transform: scale(1);
-}
-
-/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .cn-mark, .cn-glow {
-    animation: none !important;
-    transition: none !important;
+  .cn-cover {
+    animation: none;
+    transform: scale(0);
   }
-  .cn-stage .cn-mark {
-    background-color: #5B21D9;
-    transform: scale(1) rotate(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-  .cn-stage .cn-glow {
-    opacity: 0.22;
+  .cn-glow {
+    animation: none;
+    opacity: 0.2;
   }
 }
 `
 
 export default function ConstraintNetwork({ className = '' }) {
-  const [phase, setPhase] = useState('unsettled')
+  const [phase, setPhase] = useState('drawing')
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('identified'), 1200)
-    const t2 = setTimeout(() => setPhase('stable'),     2800)
+    const t1 = setTimeout(() => setPhase('identified'), REVEAL_MS + 180)
+    const t2 = setTimeout(() => setPhase('stable'),     REVEAL_MS + 180 + GLOW_MS)
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [])
 
@@ -118,6 +107,7 @@ export default function ConstraintNetwork({ className = '' }) {
       <style>{CSS}</style>
       <div className="cn-glow" />
       <div className="cn-mark" />
+      <div className="cn-cover" />
     </div>
   )
 }

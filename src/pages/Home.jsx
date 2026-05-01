@@ -108,7 +108,7 @@ export default function Home() {
 
             {/* Network visual */}
             <div className="flex items-center justify-center md:justify-end">
-              <ConstraintNetwork className="w-full max-w-[360px] md:max-w-[440px] opacity-90" />
+              <ConstraintNetwork className="w-full max-w-[340px] md:max-w-[420px]" />
             </div>
           </div>
         </section>

@@ -1,48 +1,106 @@
 import { Link } from 'react-router-dom'
+import { GROW_URL, ArrowIcon } from './ui'
+
+const company = [
+  { to: '/about', label: 'About' },
+  { to: '/how-we-work', label: 'How We Work' },
+  { to: '/advisory', label: 'Advisory' },
+]
+
+const platform = [
+  { href: GROW_URL, label: 'Grow Platform' },
+  { href: GROW_URL, label: 'Run the Diagnostic' },
+]
+
+const legal = [
+  { href: 'https://grow.centapartners.com.au/privacy', label: 'Privacy' },
+  { href: 'https://grow.centapartners.com.au/terms', label: 'Terms' },
+  { href: 'https://grow.centapartners.com.au/disclaimer', label: 'Disclaimer' },
+]
+
+function ColumnHeading({ children }) {
+  return (
+    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-text-muted">{children}</h4>
+  )
+}
+
+const linkClass =
+  'text-sm text-text-muted no-underline transition-colors hover:text-text-primary'
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-bg">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between gap-12">
-          <div>
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
+          <div className="max-w-xs">
             <img src="/logo-white.png" alt="Centa Partners" className="h-7" />
-            <p className="text-text-dim text-sm mt-2">Success, Simplified.</p>
+            <p className="mt-3 text-sm text-text-dim">Success, Simplified.</p>
+            <a
+              href={GROW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 inline-flex items-center gap-2 rounded-lg border border-border-bright px-4 py-2 text-sm font-medium text-text-secondary no-underline transition-colors hover:border-brand/50 hover:text-text-primary"
+            >
+              Run the Diagnostic
+              <ArrowIcon className="transition-transform group-hover:translate-x-0.5" />
+            </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-12">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-16">
             <div>
-              <h4 className="text-text-muted text-xs uppercase tracking-wider mb-4 font-medium">Company</h4>
-              <div className="flex flex-col gap-3">
-                <Link to="/about" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">About</Link>
-                <Link to="/how-we-work" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">How We Work</Link>
-                <Link to="/advisory" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Advisory</Link>
+              <ColumnHeading>Company</ColumnHeading>
+              <div className="mt-4 flex flex-col gap-3">
+                {company.map((l) => (
+                  <Link key={l.label} to={l.to} className={linkClass}>
+                    {l.label}
+                  </Link>
+                ))}
               </div>
             </div>
 
             <div>
-              <h4 className="text-text-muted text-xs uppercase tracking-wider mb-4 font-medium">Platform</h4>
-              <div className="flex flex-col gap-3">
-                <a href="https://grow.centapartners.com.au" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Grow Platform</a>
-                <a href="https://grow.centapartners.com.au/coach" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Centa Coach</a>
-                <a href="https://grow.centapartners.com.au/club" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Centa Club</a>
-                <a href="https://grow.centapartners.com.au/catalyst" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Centa Catalyst</a>
+              <ColumnHeading>Platform</ColumnHeading>
+              <div className="mt-4 flex flex-col gap-3">
+                {platform.map((l, i) => (
+                  <a
+                    key={`${l.label}-${i}`}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {l.label}
+                  </a>
+                ))}
               </div>
             </div>
 
-            <div>
-              <h4 className="text-text-muted text-xs uppercase tracking-wider mb-4 font-medium">Legal</h4>
-              <div className="flex flex-col gap-3">
-                <a href="https://grow.centapartners.com.au/privacy" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Privacy</a>
-                <a href="https://grow.centapartners.com.au/terms" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Terms</a>
-                <a href="https://grow.centapartners.com.au/disclaimer" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary text-sm no-underline transition-colors">Disclaimer</a>
+            <div className="col-span-2 sm:col-span-1">
+              <ColumnHeading>Legal</ColumnHeading>
+              <div className="mt-4 flex flex-col gap-3">
+                {legal.map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {l.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border text-text-dim text-xs">
-          &copy; {new Date().getFullYear()} Centa Partners. All rights reserved.
+        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-text-dim">
+            &copy; {new Date().getFullYear()} Centa Partners. All rights reserved.
+          </p>
+          <p className="font-mono text-xs tracking-wide text-text-dim">
+            Growth intelligence for tech founders · AU
+          </p>
         </div>
       </div>
     </footer>

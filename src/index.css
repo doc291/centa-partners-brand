@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand — anchored on the existing violet */
   --color-brand: #5B21D9;
   --color-brand-light: #7C3AED;
+  --color-brand-bright: #A78BFA;
+
+  /* Surfaces — kept on the existing near-black violet base */
   --color-bg: #0D0D1A;
+  --color-bg-elev: #12121F;
   --color-bg-card: #141428;
   --color-bg-card-hover: #1A1A35;
   --color-surface: #111122;
-  --color-text-primary: #E5E5E5;
-  --color-text-muted: #999999;
-  --color-text-dim: #666666;
+
+  /* Text */
+  --color-text-primary: #ECECF1;
+  --color-text-secondary: #B7B7C7;
+  --color-text-muted: #8C8CA0;
+  --color-text-dim: #5E5E72;
+
+  /* Lines */
   --color-border: #1E1E35;
+  --color-border-bright: #2C2C4D;
+
   --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
 html {
@@ -27,11 +40,115 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
 ::selection {
-  background-color: #5B21D940;
+  background-color: #7C3AED40;
   color: #ffffff;
 }
 
-#root {
-  min-height: 100vh;
+:focus-visible {
+  outline: 2px solid var(--color-brand-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-bright);
+  border-radius: 8px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a63;
+}
+
+/* ── Technical grid backdrop ─────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(124, 58, 237, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Fade a backdrop out toward its edges */
+.mask-radial-top {
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 35%, transparent 78%);
+}
+.mask-radial-center {
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 80%);
+}
+
+/* ── Soft ambient glow ───────────────────────────────────── */
+.glow {
+  border-radius: 9999px;
+  filter: blur(90px);
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.5), rgba(124, 58, 237, 0) 70%);
+  pointer-events: none;
+}
+.glow-soft {
+  border-radius: 9999px;
+  filter: blur(70px);
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.28), rgba(167, 139, 250, 0) 70%);
+  pointer-events: none;
+}
+
+/* ── Gradient text accent ────────────────────────────────── */
+.text-gradient {
+  background-image: linear-gradient(120deg, #C4B5FD 0%, #7C3AED 55%, #5B21D9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* A hairline gradient rule */
+.rule-gradient {
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, var(--color-border-bright) 20%, var(--color-border-bright) 80%, transparent);
+}
+
+/* ── Scroll reveal ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+.glow-pulse {
+  animation: glowPulse 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .glow-pulse {
+    animation: none;
+  }
 }
